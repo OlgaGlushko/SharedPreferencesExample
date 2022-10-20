@@ -42,8 +42,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
+    private void LoadText() {
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        String savedText = sharedPreferences.getString(SAVED_TEXT, "Ничего не сохранено в Shared Preferences");
+        et.setText(savedText);
+        Toast.makeText(this,"Text loaded", Toast.LENGTH_LONG).show);
+    }
+
     //    @Override
-    public void onClick(View v);
+ //   public void onClick(View v);
     //      switch (v.getId)) {
     //      case R.id.btnSave:
     //            saveText();
@@ -57,17 +64,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //  }
 //}
     private void loadText(){
-    sharedPreferences = getPreferences(MODE_PRIVATE);
-    String savedText = sharedPreferences.getString(SAVED_TEXT, "Ничего не сохранено в Shared Preferences");
-    et.setText(savedText);
-    Toast.makeText(this,"Text loaded", Toast.LENGTH_LONG).show);
+
 
     }
 
     private void saveText(){
         sharedPreferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor ed = sharedPreferences.edit());
-         ed.putString(SAVED_TEXT,et.getText().toString());
+         ed.putString(SAVED_TEXT, et.getText().toString());
          ed.commit();
          Toast.makeText(this, "Text saved", Toast.LENGTH_LONG). show();
 
